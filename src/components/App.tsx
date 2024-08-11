@@ -1,8 +1,11 @@
-import { FC, memo } from "react";
+import { FC, memo, StrictMode } from 'react';
+import cover from "../assets/cards/cover.svg";
 
 const App: FC = (): JSX.Element => {
   return (
-    <div>Hello</div>
+    <StrictMode>
+      <img src={cover} alt="" width={100} />
+    </StrictMode>
   );
 };
 
