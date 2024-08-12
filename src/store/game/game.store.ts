@@ -20,7 +20,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
     },
 
     throwCard(card) {
-        const { addCards, endTurn, currentCard, turn, player, oponent } = get();
+        const { addCards, endTurn, currentCard, turn, player, oponent, setShowPicker } = get();
 
         if (canThrowCard(card, currentCard)) {     
             const toPlayer: PlayerType = turn === 'player' ? 'oponent' : 'player';
@@ -39,9 +39,16 @@ export const useGameStore = create<GameStore>((set, get) => ({
                 addCards(4, toPlayer);
             }
 
+            if (card.value === 'bonus' || card.value === 'switcher') {
+                setShowPicker(true);
+            }
+
             endTurn();
 
             if (card.value === 'block') {
+                endTurn();
+            }
+            if (card.value === 'reverse') {
                 endTurn();
             }
         }
@@ -53,6 +60,21 @@ export const useGameStore = create<GameStore>((set, get) => ({
         set(state => ({
             ...state,
             turn: isPlayer ? 'oponent' : 'player', 
+        }));
+    },
+
+    changeColor(color) {
+        const { currentCard } = get();
+        set(state => ({
+            ...state,
+            currentCard: {...currentCard, color: color},
+        }));
+    },
+
+    setShowPicker(isShow) {
+        set(state => ({
+            ...state,
+            showPicker: isShow,
         }));
     },
 }));
