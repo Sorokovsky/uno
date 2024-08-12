@@ -56,6 +56,9 @@ import blueBlock from "../assets/cards/blue/block.svg";
 import blueReverse from "../assets/cards/blue/reverse.svg";
 import bluePlus2 from "../assets/cards/blue/plus-2.svg";
 
+import swither from "../assets/cards/switcher.svg";
+import bonus from "../assets/cards/bonus.svg";
+
 export const Cards: Card[] = [
     {
         color: "red",
@@ -320,4 +323,15 @@ export const Cards: Card[] = [
         image: bluePlus2,
         value: "plus-2"
     },
+
+    {
+        color: "none",
+        image: bonus,
+        value: "bonus",
+    },
+    {
+        color: "none",
+        image: swither,
+        value: "switcher",
+    }
 ];

@@ -1,11 +1,21 @@
 import { FC, memo } from "react";
-import PlayerCard from "../../PlayerCard/PlayerCard";
-import { Cards } from "../../../constants/cards.constant";
+import { HAND_CARD_COUNT } from "../../../constants/hand-cards-count.constants";
+import { generateCards } from "../../../utils/generate-cards";
+import HandCards from "../../HandCards/HandCards";
 
 const Game: FC = (): JSX.Element => {
     return (
         <main>
-            <PlayerCard card={Cards[0]} />
+            <HandCards
+                cards={generateCards(HAND_CARD_COUNT)}
+                position={'top'}
+                playerType='oponent'
+            />
+            <HandCards
+                cards={generateCards(HAND_CARD_COUNT)}
+                position={'bottom'}
+                playerType='player'
+            />
         </main>
     );
 };

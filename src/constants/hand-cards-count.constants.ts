@@ -1,0 +1,1 @@
+export const HAND_CARD_COUNT = 7;
