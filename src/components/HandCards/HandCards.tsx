@@ -3,23 +3,16 @@ import { IHandsCards } from "./HandCards.props";
 import cn from "clsx";
 import styles from "./HandCards.module.sass";
 import PlayerCard from "../PlayerCard/PlayerCard";
-import coverCard from "../../assets/cards/cover.svg";
 import { getId } from "../../utils/get-id";
 
 const HandCards: FC<IHandsCards> = ({ position = 'bottom', cards, playerType }): JSX.Element => {
-    console.log(playerType);
-    
     return (
         <div className={cn(styles.hand, styles[position], styles[playerType])}>
-            {cards.map((card) => {
-                console.log(playerType === 'oponent');
-                
-                if (playerType === 'oponent') {
-                    card = { ...card, image: coverCard };
-                }
+            {cards.map((card) => { 
                 return <PlayerCard
                     key={getId()}
                     card={card}
+                    playerType={playerType}
                 />
             })}
         </div>

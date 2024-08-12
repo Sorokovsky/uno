@@ -8,6 +8,8 @@ export type GameStore = {
     turn: PlayerType;
     player: Player;
     oponent: Player;
-    addCards: (get: GetGame, count: number, player: PlayerType) => GameStore;
-    throwCard: (get: GetGame, card: Card) => GameStore;
+    currentCard: Card;
+    addCards: (count: number, to: PlayerType) => void;
+    throwCard: (card: Card) => void;
+    endTurn: () => void;
 };

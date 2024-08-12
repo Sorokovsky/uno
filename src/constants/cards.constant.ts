@@ -1,4 +1,4 @@
-import { Card } from "../types/card.type";
+import type { Card } from "../types/card.type";
 
 import redZero from "../assets/cards/red/0.svg";
 import redOne from "../assets/cards/red/1.svg";
@@ -58,278 +58,333 @@ import bluePlus2 from "../assets/cards/blue/plus-2.svg";
 
 import swither from "../assets/cards/switcher.svg";
 import bonus from "../assets/cards/bonus.svg";
+import { getId } from "../utils/get-id";
 
 export const Cards: Card[] = [
     {
+        id: getId(),
         color: "red",
         image: redZero,
         value: "0",
     },
     {
+        id: getId(),
         color: "red",
         image: redOne,
         value: "1"
     },
     {
+        id: getId(),
         color: "red",
         image: redTwo,
         value: "2",
     },
     {
+        id: getId(),
         color: "red",
         image: redThree,
         value: "3",
     },
     {
+        id: getId(),
         color: "red",
         image: redFour,
         value: "4",
     },
     {
+        id: getId(),
         color: 'red',
         image: redFive,
         value: "5",
     },
     {
+        id: getId(),
         color: "red",
         image: redSix,
         value: "6",
     },
     {
+        id: getId(),
         color: "red",
         image: redSeven,
         value: "7"
     },
     {
+        id: getId(),
         color: "red",
         image: redEight,
         value: "8"
     },
     {
+        id: getId(),
         color: "red",
         image: redNine,
         value: "9",
     },
     {
+        id: getId(),
         color: "red",
         image: redBlock,
         value: "block",
     },
     {
+        id: getId(),
         color: "red",
         image: redReverse,
         value: "reverse"
     },
     {
+        id: getId(),
         color: "red",
         image: redPlus2,
         value: "plus-2"
     },
 
     {
+        id: getId(),
         color: "green",
         image: greenZero,
         value: "0",
     },
     {
+        id: getId(),
         color: "green",
         image: greenOne,
         value: "1"
     },
     {
+        id: getId(),
         color: "green",
         image: greenTwo,
         value: "2",
     },
     {
+        id: getId(),
         color: "green",
         image: greenThree,
         value: "3",
     },
     {
+        id: getId(),
         color: "green",
         image: greenFour,
         value: "4",
     },
     {
+        id: getId(),
         color: 'green',
         image: greenFive,
         value: "5",
     },
     {
+        id: getId(),
         color: "green",
         image: greenSix,
         value: "6",
     },
     {
+        id: getId(),
         color: "green",
         image: greenSeven,
         value: "7"
     },
     {
+        id: getId(),
         color: "green",
         image: greenEight,
         value: "8"
     },
     {
+        id: getId(),
         color: "green",
         image: greenNine,
         value: "9",
     },
     {
+        id: getId(),
         color: "green",
         image: greenBlock,
         value: "block",
     },
     {
+        id: getId(),
         color: "green",
         image: greenReverse,
         value: "reverse"
     },
     {
+        id: getId(),
         color: "green",
         image: greenPlus2,
         value: "plus-2"
     },
 
     {
+        id: getId(),
         color: "yellow",
         image: yellowZero,
         value: "0",
     },
     {
+        id: getId(),
         color: "yellow",
         image: yellowOne,
         value: "1"
     },
     {
+        id: getId(),
         color: "yellow",
         image: yellowTwo,
         value: "2",
     },
     {
+        id: getId(),
         color: "yellow",
         image: yellowThree,
         value: "3",
     },
     {
+        id: getId(),
         color: "yellow",
         image: yellowFour,
         value: "4",
     },
     {
+        id: getId(),
         color: 'yellow',
         image: yellowFive,
         value: "5",
     },
     {
+        id: getId(),
         color: "yellow",
         image: yellowSix,
         value: "6",
     },
     {
+        id: getId(),
         color: "yellow",
         image: yellowSeven,
         value: "7"
     },
     {
+        id: getId(),
         color: "yellow",
         image: yellowEight,
         value: "8"
     },
     {
+        id: getId(),
         color: "yellow",
         image: yellowNine,
         value: "9",
     },
     {
+        id: getId(),
         color: "yellow",
         image: yellowBlock,
         value: "block",
     },
     {
+        id: getId(),
         color: "yellow",
         image: yellowReverse,
         value: "reverse"
     },
     {
+        id: getId(),
         color: "yellow",
         image: yellowPlus2,
         value: "plus-2"
     },
 
     {
+        id: getId(),
         color: "blue",
         image: blueZero,
         value: "0",
     },
     {
+        id: getId(),
         color: "blue",
         image: blueOne,
         value: "1"
     },
     {
+        id: getId(),
         color: "blue",
         image: blueTwo,
         value: "2",
     },
     {
+        id: getId(),
         color: "blue",
         image: blueThree,
         value: "3",
     },
     {
+        id: getId(),
         color: "blue",
         image: blueFour,
         value: "4",
     },
     {
+        id: getId(),
         color: 'blue',
         image: blueFive,
         value: "5",
     },
     {
+        id: getId(),
         color: "blue",
         image: blueSix,
         value: "6",
     },
     {
+        id: getId(),
         color: "blue",
         image: blueSeven,
         value: "7"
     },
     {
+        id: getId(),
         color: "blue",
         image: blueEight,
         value: "8"
     },
     {
+        id: getId(),
         color: "blue",
         image: blueNine,
         value: "9",
     },
     {
+        id: getId(),
         color: "blue",
         image: blueBlock,
         value: "block",
     },
     {
+        id: getId(),
         color: "blue",
         image: blueReverse,
         value: "reverse"
     },
     {
+        id: getId(),
         color: "blue",
         image: bluePlus2,
         value: "plus-2"
     },
 
     {
+        id: getId(),
         color: "none",
         image: bonus,
         value: "bonus",
     },
     {
+        id: getId(),
         color: "none",
         image: swither,
         value: "switcher",

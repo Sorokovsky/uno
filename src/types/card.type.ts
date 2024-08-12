@@ -21,6 +21,7 @@ export type UnoValues = '0'
     | 'switcher';
 
 export type Card = {
+    id: number;
     image: string;
     color: UnoColors;
     value: UnoValues;

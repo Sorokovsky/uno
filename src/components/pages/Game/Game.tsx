@@ -1,18 +1,33 @@
 import { FC, memo } from "react";
-import { HAND_CARD_COUNT } from "../../../constants/hand-cards-count.constants";
-import { generateCards } from "../../../utils/generate-cards";
 import HandCards from "../../HandCards/HandCards";
+import { useGameStore } from '../../../store/game/game.store';
+import Button from "../../ui/Button/Button";
+import cn from 'clsx';
+import styles from "./Game.module.sass";
+import CurrentCard from "../../CurrentCard/CurrentCard";
 
 const Game: FC = (): JSX.Element => {
+    const { player, oponent, endTurn } = useGameStore();
     return (
         <main>
             <HandCards
-                cards={generateCards(HAND_CARD_COUNT)}
+                cards={oponent.deck}
                 position={'top'}
                 playerType='oponent'
             />
+            <Button
+                onClick={endTurn}
+                className={cn(styles.endTurn)}
+            >
+                End Turn
+            </Button>
+            <div
+                className={cn(styles.center)}
+            >
+                <CurrentCard />
+            </div>
             <HandCards
-                cards={generateCards(HAND_CARD_COUNT)}
+                cards={player.deck}
                 position={'bottom'}
                 playerType='player'
             />
