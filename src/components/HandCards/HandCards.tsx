@@ -10,7 +10,7 @@ const HandCards: FC<IHandsCards> = ({ position = 'bottom', cards, playerType }):
     console.log(playerType);
     
     return (
-        <div className={cn(styles.hand, styles[position])}>
+        <div className={cn(styles.hand, styles[position], styles[playerType])}>
             {cards.map((card) => {
                 console.log(playerType === 'oponent');
                 
