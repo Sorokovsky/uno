@@ -3,9 +3,10 @@ import type { GameStore, GetGame } from '../../../types/game.type';
 import { canThrowCard } from "../../../utils/canThrowCard";
 
 export const throwCardAction = (get: GetGame, card: Card): Partial<GameStore> => {
-    const { endTurn, currentCard, turn, player, oponent, activateCard } = get();
+    const { endTurn, currentCard, turn, player, oponent, activateCard, setCanChangeTurn } = get();
     let state: Partial<GameStore> = {};
-    if (canThrowCard(card, currentCard)) {     
+    if (canThrowCard(card, currentCard)) {
+        setCanChangeTurn(true);
         const isPlayer = turn === 'player';
         const person = isPlayer ? player : oponent;
         state = {   

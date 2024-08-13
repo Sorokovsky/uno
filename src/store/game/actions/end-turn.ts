@@ -1,9 +1,13 @@
 import type { GameStore, GetGame } from '../../../types/game.type';
 
 export const endTurnAction = (get: GetGame): Partial<GameStore> => {
-    const { turn } = get();
+    const { turn, canChangeTurn } = get();
     const isPlayer = turn === 'player';
-    return {
-        turn: isPlayer ? 'oponent' : 'player', 
-    };
+    let state: Partial<GameStore> = {};
+    if (canChangeTurn) {
+        state = {
+            turn: isPlayer ? 'oponent' : 'player',
+        };
+    }
+    return state;
 };

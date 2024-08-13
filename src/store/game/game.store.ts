@@ -8,6 +8,7 @@ import { changeColorAction } from "./actions/change-color";
 import { endTurnAction } from "./actions/end-turn";
 import { setShowPickerAction } from "./actions/set-show-picker";
 import { throwCardAction } from './actions/throw-card';
+import { setCanChangeTurnAction } from './actions/set-can-change-turn';
 
 export const useGameStore = create<GameStore>((set, get) => ({
     ...initGameStore,
@@ -23,4 +24,6 @@ export const useGameStore = create<GameStore>((set, get) => ({
     setShowPicker: (isShow) => set(setShowPickerAction(isShow)),
 
     activateCard: (card) => set(activateCardAction(get, card)),
+
+    setCanChangeTurn: (canChangeTurn) => set(setCanChangeTurnAction(get, canChangeTurn)),
 }));
