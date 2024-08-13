@@ -15,4 +15,5 @@ export type GameStore = {
     setShowPicker: (isShow: boolean) => void;
     changeColor: (color: UnoColors) => void;
     endTurn: () => void;
+    activateCard: (card: Card) => void;
 };

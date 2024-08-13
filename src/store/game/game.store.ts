@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { initGameStore } from "../../constants/init-game-store";
 import type { GameStore } from "../../types/game.type";
 import type { PlayerType } from "../../types/player-type.type";
+import { activateCardAction } from "./actions/activate-card";
 import { addCardsAction } from "./actions/add-cards";
 import { changeColorAction } from "./actions/change-color";
 import { endTurnAction } from "./actions/end-turn";
@@ -20,4 +21,6 @@ export const useGameStore = create<GameStore>((set, get) => ({
     changeColor: (color) => set(changeColorAction(get, color)),
 
     setShowPicker: (isShow) => set(setShowPickerAction(isShow)),
+
+    activateCard: (card) => set(activateCardAction(get, card)),
 }));
