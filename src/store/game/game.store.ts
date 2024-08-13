@@ -25,5 +25,5 @@ export const useGameStore = create<GameStore>((set, get) => ({
 
     activateCard: (card) => set(activateCardAction(get, card)),
 
-    setCanChangeTurn: (canChangeTurn) => set(setCanChangeTurnAction(get, canChangeTurn)),
+    setCanChangeTurn: (canChangeTurn) => set(setCanChangeTurnAction(canChangeTurn)),
 }));

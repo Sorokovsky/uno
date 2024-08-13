@@ -1,6 +1,6 @@
-import type { GameStore, GetGame } from "../../../types/game.type";
+import type { GameStore } from "../../../types/game.type";
 
-export const setCanChangeTurnAction = (get: GetGame, canChangeTurn: boolean): Partial<GameStore> => {
+export const setCanChangeTurnAction = (canChangeTurn: boolean): Partial<GameStore> => {
     return {
         canChangeTurn,
     };
