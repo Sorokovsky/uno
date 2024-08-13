@@ -1,80 +1,23 @@
 import { create } from "zustand";
 import { initGameStore } from "../../constants/init-game-store";
-import { GameStore } from "../../types/game.type";
-import { PlayerType } from "../../types/player-type.type";
-import { canThrowCard } from "../../utils/canThrowCard";
-import { generateCards } from '../../utils/generate-cards';
+import type { GameStore } from "../../types/game.type";
+import type { PlayerType } from "../../types/player-type.type";
+import { addCardsAction } from "./actions/add-cards";
+import { changeColorAction } from "./actions/change-color";
+import { endTurnAction } from "./actions/end-turn";
+import { setShowPickerAction } from "./actions/set-show-picker";
+import { throwCardAction } from './actions/throw-card';
 
 export const useGameStore = create<GameStore>((set, get) => ({
     ...initGameStore,
-    addCards(count, to: PlayerType) {
-        const { player, oponent, turn } = get();
-        const person = to === 'player' ? player : oponent;
-        console.log(turn);
-        
-        set(state => ({
-            ...state,
-            [to]: { ...person, deck: [...person.deck, ...generateCards(count)]}
-        }));
-        
-    },
 
-    throwCard(card) {
-        const { addCards, endTurn, currentCard, turn, player, oponent, setShowPicker } = get();
+    addCards: (count, to: PlayerType) => set(addCardsAction(get, count, to)),
 
-        if (canThrowCard(card, currentCard)) {     
-            const toPlayer: PlayerType = turn === 'player' ? 'oponent' : 'player';
-            const isPlayer = turn === 'player';
-            const person = isPlayer ? player : oponent;
-            set(state => ({
-                ...state,
-                currentCard: card,
-                [turn]: {...person, deck: person.deck.filter(c => c.id !== card.id)}
-            }));
+    throwCard: (card) => set(throwCardAction(get, card)),
 
-            if (card.value === 'plus-2') {                
-                addCards(2, toPlayer);
-            }
-            if (card.value === 'bonus') {
-                addCards(4, toPlayer);
-            }
+    endTurn: () => set(endTurnAction(get)),
 
-            if (card.value === 'bonus' || card.value === 'switcher') {
-                setShowPicker(true);
-            }
+    changeColor: (color) => set(changeColorAction(get, color)),
 
-            endTurn();
-
-            if (card.value === 'block') {
-                endTurn();
-            }
-            if (card.value === 'reverse') {
-                endTurn();
-            }
-        }
-    },
-
-    endTurn() {
-        const { turn } = get();
-        const isPlayer = turn === 'player';
-        set(state => ({
-            ...state,
-            turn: isPlayer ? 'oponent' : 'player', 
-        }));
-    },
-
-    changeColor(color) {
-        const { currentCard } = get();
-        set(state => ({
-            ...state,
-            currentCard: {...currentCard, color: color},
-        }));
-    },
-
-    setShowPicker(isShow) {
-        set(state => ({
-            ...state,
-            showPicker: isShow,
-        }));
-    },
+    setShowPicker: (isShow) => set(setShowPickerAction(isShow)),
 }));

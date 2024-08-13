@@ -6,13 +6,13 @@ export type GetGame = () => GameStore;
 
 export type GameStore = {
     turn: PlayerType;
-    player: Player;
     oponent: Player;
-    currentCard: Card;
+    player: Player;
     showPicker: boolean;
-    addCards: (count: number, to: PlayerType) => void;
+    currentCard: Card;
     throwCard: (card: Card) => void;
-    endTurn: () => void;
-    changeColor: (color: UnoColors) => void;
+    addCards: (count: number, to: PlayerType) => void;
     setShowPicker: (isShow: boolean) => void;
+    changeColor: (color: UnoColors) => void;
+    endTurn: () => void;
 };
