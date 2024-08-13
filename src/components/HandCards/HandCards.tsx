@@ -7,10 +7,12 @@ import { getId } from "../../utils/get-id";
 import { useGameStore } from "../../store/game/game.store";
 import type { Card } from '../../types/card.type';
 import { canThrowCard } from '../../utils/canThrowCard';
+import { useNavigate } from 'react-router-dom';
 
 const HandCards: FC<IHandsCards> = ({ position = 'bottom', cards, playerType }): JSX.Element => {
     const { turn, oponent, currentCard, throwCard, addCards } = useGameStore();
     const isOponent = playerType === 'oponent';
+    const navigate = useNavigate();
 
     useEffect(() => {
         const isOponentTurn = isOponent && turn === 'oponent';
@@ -28,8 +30,9 @@ const HandCards: FC<IHandsCards> = ({ position = 'bottom', cards, playerType }):
             } else {
                 addCards(1, 'oponent');
             }
-
         }
+
+        if (cards.length === 0) navigate("/");
 
     }, [turn, oponent, playerType]);
 

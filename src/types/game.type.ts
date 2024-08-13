@@ -18,4 +18,5 @@ export type GameStore = {
     endTurn: () => void;
     activateCard: (card: Card) => void;
     setCanChangeTurn: (canChangeTurn: boolean) => void;
+    resetGame: () => void;
 };

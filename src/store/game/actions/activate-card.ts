@@ -3,7 +3,7 @@ import type { GameStore, GetGame } from "../../../types/game.type";
 import type { PlayerType } from "../../../types/player-type.type";
 
 export const activateCardAction = (get: GetGame, card: Card): Partial<GameStore> => {
-    const { turn, addCards, setShowPicker, endTurn } = get();
+    const { turn, addCards, setShowPicker, endTurn, setCanChangeTurn } = get();
     const toPlayer: PlayerType = turn === 'player' ? 'oponent' : 'player';
     switch (card.value) {
         case 'block':
@@ -16,10 +16,12 @@ export const activateCardAction = (get: GetGame, card: Card): Partial<GameStore>
             addCards(2, toPlayer);
             break;
         case 'bonus':
+            setCanChangeTurn(false);
             setShowPicker(true);
             addCards(4, toPlayer);
             break;
         case 'switcher':
+            setCanChangeTurn(false);
             setShowPicker(true);
             break;
         default:

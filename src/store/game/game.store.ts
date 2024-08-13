@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { initGameStore } from "../../constants/init-game-store";
+import { getNewGame } from "../../constants/init-game-store";
 import type { GameStore } from "../../types/game.type";
 import type { PlayerType } from "../../types/player-type.type";
 import { activateCardAction } from "./actions/activate-card";
@@ -11,7 +11,7 @@ import { throwCardAction } from './actions/throw-card';
 import { setCanChangeTurnAction } from './actions/set-can-change-turn';
 
 export const useGameStore = create<GameStore>((set, get) => ({
-    ...initGameStore,
+    ...getNewGame(),
 
     addCards: (count, to: PlayerType) => set(addCardsAction(get, count, to)),
 
@@ -26,4 +26,6 @@ export const useGameStore = create<GameStore>((set, get) => ({
     activateCard: (card) => set(activateCardAction(get, card)),
 
     setCanChangeTurn: (canChangeTurn) => set(setCanChangeTurnAction(canChangeTurn)),
+
+    resetGame: () => set(getNewGame()),
 }));

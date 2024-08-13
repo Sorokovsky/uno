@@ -6,12 +6,14 @@ import { UnoColors } from "../../types/card.type";
 import { useGameStore } from '../../store/game/game.store';
 
 const Swither: FC<ISwither> = (): JSX.Element => {
-    const { changeColor, showPicker, setShowPicker } = useGameStore();
+    const { changeColor, showPicker, setShowPicker, setCanChangeTurn, endTurn } = useGameStore();
     const changeColorHandler = useCallback((event: MouseEvent<HTMLInputElement>) => {
         const target = event.target as HTMLInputElement;
         const color = target.value as UnoColors;
         changeColor(color);
         setShowPicker(false);
+        setCanChangeTurn(true);
+        endTurn();
     }, [showPicker]);
 
     return (
